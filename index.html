@@ -11,8 +11,25 @@
         <h1>Pokedex API</h1>
     </header>
     <main>
-        <label for="pokemon">Escreva o nome do pokemon: </label><input type="text">
-
+        <label for="pokemon">Escreva o nome do pokemon: </label><input type="text" id="pokemon">
+        <button onclick="Buscarpokemon()">buscar</button>
+        <br>
+        <p id="aviso" hidden>Buscando pokemon...</p>
+        <div id="areaResposta">
+            <label for="nome" hidden class="rotulo">nome: </label><span id="nome"></span> <br>
+            <label for="numero" hidden class="rotulo">numero: </label><span id="numero"></span><br>
+            <label for="foto" hidden class="rotulo">foto: </label> <br><img src="" alt="" id="foto"><br>
+            <label for="altura" hidden class="rotulo">altura: </label><span id="altura"></span><br>
+            <label for="peso" hidden class="rotulo">peso: </label><span id="peso"></span><br>
+            <span id="tipo1" class="tipo"></span>
+            <span id="tipo2" class="tipo" hidden></span>
+            <label class="rotulo" hidden>HP: <span id="hp"></span> <progress id="barra-hp" max="150"></progress></label><br>
+            <label class="rotulo" hidden>Ataque: <span id="ataque"></span> <progress   id="barra-ataque" max="150"></progress></label><br>
+            <label class="rotulo" hidden>Defesa: <span id="defesa"></span> <progress   id="barra-defesa" max="150"></progress></label><br>
+            <label class="rotulo" hidden>Ataque Esp.: <span id="ataque-esp"></span>    <progress id="barra-ataque-esp" max="150"></progress></label><br>
+            <label class="rotulo" hidden>Defesa Esp.: <span id="defesa-esp"></span>    <progress id="barra-defesa-esp" max="150"></progress></label><br>
+            <label class="rotulo" hidden>Velocidade: <span id="velocidade"></span> <progress id="barra-velocidade" max="150"></progress></label><br>
+        </div>
     </main>
     <script src="index.js"></script>
 </body>

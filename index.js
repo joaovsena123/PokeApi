@@ -21,8 +21,14 @@ const coresDosTipos = {
 async function Buscarpokemon() {
     const pokemon = document.getElementById("pokemon").value.toLowerCase().trim();
     const aviso = document.getElementById("aviso")
+    const erro = document.getElementById("erro");
+    const erro2 = document.getElementById("erro2");
+    erro.hidden = true;
+    erro2.hidden = true;
     if (pokemon == "") {
-        alert("Digite um pokemon");
+        erro2.hidden = false;
+        areaResposta.hidden = true;
+        document.body.style.background = "";
         return
     }
     aviso.hidden = false;
@@ -30,7 +36,8 @@ async function Buscarpokemon() {
     aviso.hidden = true;
     if(!resposta.ok) {
         areaResposta.hidden = true;
-        alert("Pokemon invalido");
+        document.body.style.background = "";
+        erro.hidden = false;
         return
     }
     const dados = await resposta.json();
@@ -38,7 +45,7 @@ async function Buscarpokemon() {
 
     document.getElementById("nome").textContent = dados.name;
     document.getElementById("numero").textContent = dados.id;
-    document.getElementById("foto").src = dados.sprites.front_default;
+    document.getElementById("foto").src = dados.sprites.other["official-artwork"].front_default;
     document.getElementById("altura").textContent = dados.height / 10 + " m";
     document.getElementById("peso").textContent = dados.weight / 10 + " kg";
     const stats = dados.stats;
@@ -56,18 +63,6 @@ async function Buscarpokemon() {
     document.getElementById("barra-velocidade").value = stats[5].base_stat;
     const tipo1 = document.getElementById("tipo1");
     const tipo2 = document.getElementById("tipo2");
-
-    tipo1.textContent = dados.types[0].type.name;
-    tipo1.className = "tipo " + dados.types[0].type.name;   
-    if (dados.types[1]) {                      
-        tipo2.textContent = dados.types[1].type.name;
-        tipo2.className = "tipo " + dados.types[1].type.name;
-        tipo2.hidden = false;
-    } else {
-         tipo2.hidden = true;                  
-        }
-    const tipo1C = document.getElementById("tipo1");
-    const tipo2C = document.getElementById("tipo2");
     const nomeTipo1 = dados.types[0].type.name;
 
     tipo1.textContent = nomeTipo1;
@@ -93,4 +88,9 @@ async function Buscarpokemon() {
         label.hidden = false;
 });
     }
+    document.getElementById("pokemon").addEventListener("keydown", function (evento) {
+  if (evento.key === "Enter") {
+    Buscarpokemon();
+  }
+});
 

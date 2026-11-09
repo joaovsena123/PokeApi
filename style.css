@@ -1,30 +1,198 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
-    transition: background-color 0.5s;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #1f2937;
+    background: linear-gradient(160deg, #3b4cca, #1b2470);
 }
 
 [hidden] {
     display: none !important;
 }
 
+
+.cartao {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border: 4px solid #222;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: #dc2626;
+    border-bottom: 4px solid #222;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.lente {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    background: radial-gradient(circle at 30% 30%, #bfe9ff, #2d9cdb 60%, #1b6aa5);
+    box-shadow: 0 0 0 2px #222;
+}
+
+main {
+    padding: 14px 18px 16px;
+}
+.busca {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.busca label {
+    width: 100%;
+    font-weight: bold;
+}
+
+.busca input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+}
+
+.busca button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #dc2626;
+    border: 2px solid #222;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.busca button:hover {
+    background: #b91c1c;
+}
+
+.busca input:focus-visible,
+.busca button:focus-visible {
+    outline: 3px solid #3b4cca;
+    outline-offset: 2px;
+}
+
+#aviso {
+    margin: 10px 0 0;
+    text-align: center;
+    color: #475569;
+}
+
+#erro,
+#erro2 {
+    margin: 10px 0 0;
+    padding: 8px 12px;
+    color: #991b1b;
+    background: #fee2e2;
+    border: 2px solid #fca5a5;
+    border-radius: 10px;
+}
+#areaResposta {
+    margin-top: 6px;
+    text-align: center;
+    line-height: 1.45;
+}
+
 #foto {
-    width: 200px;
+    display: block;
+    margin: 0 auto 4px;
+    width: 130px;
+    max-width: 100%;
+}
+#foto[src=""] {
+    display: none;
+}
+
+#nome {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+
+.rotulo {
+    font-weight: bold;
 }
 
 .tipo {
     display: inline-block;
-    padding: 4px 12px;
-    margin: 6px 6px 10px 0;
+    padding: 2px 12px;
+    margin: 2px 4px 4px;
     border-radius: 999px;
     color: #fff;
     font-weight: bold;
     text-transform: capitalize;
     background: #777;
 }
+.busca + br,                  
+label[for="foto"],             
+label[for="foto"] + br,         
+#foto + br {                  
+    display: none;
+}
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 110px;
+    height: 8px;
+    border: none;
+    border-radius: 4px;
+    background: #e5e7eb;
+    vertical-align: middle;
+}
 
-.rotulo {
-    font-weight: bold;
+progress::-webkit-progress-bar {
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+    background: #3fb68b;
+    border-radius: 4px;
+}
+
+progress::-moz-progress-bar {
+    background: #3fb68b;
+    border-radius: 4px;
+}
+
+@media (max-height: 720px) {
+    body {
+        padding: 8px;
+    }
+
+    #foto {
+        width: 100px;
+    }
+
+    #areaResposta {
+        line-height: 1.35;
+    }
 }
